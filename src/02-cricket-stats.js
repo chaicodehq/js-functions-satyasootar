@@ -38,11 +38,12 @@
  *   // => { name: "Jadeja", strikeRate: 175, economy: 7.5, battingAvg: 28.57, isAllRounder: false }
  */
 export const calcStrikeRate = (runs, balls) => {
-  // Your code here
+  const strikeRate = ((runs/balls)*100).toFixed(2)
+  return balls <= 0 ? 0: strikeRate
 };
 
 export const calcEconomy = (runsConceded, overs) => {
-  // Your code here
+   
 };
 
 export const calcBattingAvg = (totalRuns, innings, notOuts = 0) => {
