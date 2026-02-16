@@ -89,13 +89,10 @@ export function applyAddons(plan, ...addons) {
   for(let addon of addons){
     newDailyRate += addon.price;
   }
-  
 
   const newTotalCost = newDailyRate * plan.days;
-  
 
   const addonNames = addons.map(addon => addon.name);
-  
 
   return {
     ...plan,             
