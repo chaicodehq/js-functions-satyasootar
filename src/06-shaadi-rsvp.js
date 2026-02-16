@@ -46,7 +46,7 @@
  *   // => "Amit is coming!"
  */
 export function processGuests(guests, filterFn) {
-  // Your code here
+  
 }
 
 export function notifyGuests(guests, notifyCallback) {
