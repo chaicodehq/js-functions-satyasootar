@@ -167,7 +167,7 @@ export function countVotesInRegions(regionTree) {
   }
 
   const subVotes = regionTree.subRegions.reduce((total, sub) => {
-    return total + countVotesInRegions(sub);   // recurse into each 
+    return total + countVotesInRegions(sub);   
   }, 0);
 
   return currentVotes + subVotes;
