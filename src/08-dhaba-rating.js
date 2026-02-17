@@ -2,8 +2,7 @@
  * 🍛 Highway Dhaba Rating System - Higher-Order Functions
  *
  * Highway pe dhabas ki rating system bana raha hai. Higher-order functions
- * (HOF) use karne hain — aise functions jo doosre functions ko parameter
- * mein lete hain YA return karte hain.
+ * (HOF) use karne hain — aise functions jo doosre functions ko parameter mein lete hain YA return karte hain.
  *
  * Functions:
  *
@@ -45,17 +44,38 @@
  *   // => [{ rating: 5 }, { rating: 3 }]
  */
 export function createFilter(field, operator, value) {
-  // Your code here
+  const operators = {
+    ">": (a, b)=> a > b,
+    "<": (a, b) => a < b,
+    ">=": (a, b) => a >= b,
+    "<=": (a, b) => a <= b,
+    "===": (a, b) => a === b,
+  }
+
+  return (obj)=> {
+    if(!operators[operator]) return false;
+    return operators[operator](obj[field], value);
+  }
 }
 
 export function createSorter(field, order = "asc") {
-  // Your code here
+  return (a, b) => {
+    if (a[field] < b[field]) return order === "asc" ? -1 : 1;
+    if (a[field] > b[field]) return order === "asc" ? 1 : -1;
+    return 0;
+  };
 }
 
 export function createMapper(fields) {
-  // Your code here
+  return (obj) => {
+    return fields.reduce((acc, field) => {
+      acc[field] = obj[field];
+      return acc;
+    }, {});
+  };
 }
 
 export function applyOperations(data, ...operations) {
-  // Your code here
+  if (!Array.isArray(data)) return [];
+  return operations.reduce((result, operation) => operation(result), data);
 }
